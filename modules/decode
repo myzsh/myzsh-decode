@@ -1,0 +1,15 @@
+#!/usr/bin/zsh
+
+function decode(){
+	local encoding="$1"
+	local msg="$2"
+
+	case "$encoding" in
+	base64)
+		echo "$msg" | base64 --decode
+	;;
+	base64compressed)
+		echo "$msg" | base64 --decode | gzip -cd
+	esac
+}
+#vim: filetype=zsh noexpandtab
